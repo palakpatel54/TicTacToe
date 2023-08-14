@@ -68,9 +68,39 @@ private Button createButton(int row, int col) {
     return button;
 }
 private boolean checkWin(int row, int col) {
-    // Check for win conditions
-    return false;  // Replace with your win condition logic
+	// Check rows
+    for (int i = 0; i < 3; i++) {
+        if (buttons[i][0].getText().equals(String.valueOf(currentPlayer))
+                && buttons[i][1].getText().equals(String.valueOf(currentPlayer))
+                && buttons[i][2].getText().equals(String.valueOf(currentPlayer))) {
+            return true;
+        }
+    }
+
+    // Check columns
+    for (int i = 0; i < 3; i++) {
+        if (buttons[0][i].getText().equals(String.valueOf(currentPlayer))
+                && buttons[1][i].getText().equals(String.valueOf(currentPlayer))
+                && buttons[2][i].getText().equals(String.valueOf(currentPlayer))) {
+            return true;
+        }
+    }
+
+    // Check diagonals
+    if (buttons[0][0].getText().equals(String.valueOf(currentPlayer))
+            && buttons[1][1].getText().equals(String.valueOf(currentPlayer))
+            && buttons[2][2].getText().equals(String.valueOf(currentPlayer))) {
+        return true;
+    }
+    if (buttons[0][2].getText().equals(String.valueOf(currentPlayer))
+            && buttons[1][1].getText().equals(String.valueOf(currentPlayer))
+            && buttons[2][0].getText().equals(String.valueOf(currentPlayer))) {
+        return true;
+    }
+
+    return false;
 }
+ 
 
 private boolean isBoardFull() {
     for (int row = 0; row < 3; row++) {
